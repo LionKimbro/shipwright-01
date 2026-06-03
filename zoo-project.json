@@ -1,0 +1,13 @@
+{
+  "zookeep-project-guid": "7d6c0dfd-b7b4-4ee2-ac20-9e85712505e0",
+  "name": "shipwright-01",
+  "repo-type": "python-2026-03",
+  "license": "CC0-1.0",
+  "repository": {
+    "name": "shipwright-01",
+    "visibility": "public"
+  },
+  "python-package": {
+    "name": "shipwright01"
+  }
+}
