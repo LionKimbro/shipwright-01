@@ -1,0 +1,55 @@
+{
+  "document": {
+    "document_id": "shipwright.coordinates.2026-06-02",
+    "title": "Shipwright Coordinates Register",
+    "created": "2026-06-02",
+    "updated": "2026-06-02",
+    "purpose": "Track file resources and coordinate-bearing references provided during the Shipwright work session."
+  },
+  "policy": {
+    "instruction": "Append newly provided file resources here as work continues, especially coordinate-bearing and implementation-critical references.",
+    "status": "active"
+  },
+  "resources": [
+    {
+      "id": "coding_guidelines.lions_philosophy_of_programming_simplified",
+      "kind": "guidelines",
+      "path": "F:\\repo\\lions-documents\\coding-guidelines\\v2026-01-14_part2_lions-philosophy-of-programming_simplified.json",
+      "notes": [
+        "Primary coding philosophy for this thread.",
+        "Procedural, clarity-first, validation-at-the-boundary guidance."
+      ]
+    },
+    {
+      "id": "svg2canvasx.flow_format_reference",
+      "kind": "format_reference",
+      "path": "F:\\repo\\svg-to-canvas-extractor\\docs\\raw\\0002__svg2canvasx_package_flow-file-use.json",
+      "notes": [
+        "Defines the svg2canvasx flow file format.",
+        "Explains presentation layers, annotation layers, and semantic regions."
+      ]
+    },
+    {
+      "id": "shipwright.command_interface_deck_flow",
+      "kind": "flow_document",
+      "path": "F:\\repo\\shipwright-01\\data\\command-interface-deck.flow.json",
+      "notes": [
+        "Describes the Command Interface Deck appearance.",
+        "Contains semantic region information that is important for logical interpretation.",
+        "Canvas size is 1000 by 800."
+      ],
+      "source": {
+        "path": "F:\\repo\\svg-to-canvas-extractor\\examples\\command-interface-deck.massaged.svg"
+      }
+    },
+    {
+      "id": "lionscliapp.reference_manual",
+      "kind": "package_reference",
+      "path": "F:\\repo\\lionscliapp\\doc\\reference.json",
+      "notes": [
+        "Reference manual for the lionscliapp Python package.",
+        "Describes declaration lifecycle, app.ctx usage, path.* coercion, JSON helpers, and command registration."
+      ]
+    }
+  ]
+}
