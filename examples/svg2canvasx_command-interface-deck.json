@@ -1,0 +1,298 @@
+{
+  "schema": "shipwright-01.command-interface.v0",
+  "title": "Untitled Command Interface",
+  "commands": [
+    {
+      "slot": 0,
+      "name": "extract",
+      "description_short": "extract a full JSON description from SVG",
+      "description_long": "svg2canvasx -i <input>.svg -o <full-output>.json"
+    },
+    {
+      "slot": 1,
+      "name": "flow",
+      "description_short": "convert full JSON to \"flow\" form JSON",
+      "description_long": "flow JSON is simplified for canavs presentation"
+    },
+    {
+      "slot": 2,
+      "name": "preview",
+      "description_short": "preview \"flow\" JSON visually",
+      "description_long": "creates a window with the presentation layers drawn; "
+    },
+    {
+      "slot": 3,
+      "name": "rawtkinter",
+      "description_short": "render tkinter code",
+      "description_long": "renders a function that draws the input flow presentation objects into Python canvas drawing code"
+    },
+    {
+      "slot": 4,
+      "name": "semantics",
+      "description_short": "convert \"flow\" JSON into simplified form",
+      "description_long": "the simplified form is for the sake of LLMs trying to understand what annotations are available"
+    },
+    {
+      "slot": 5,
+      "name": "help-layout",
+      "description_short": "displays guidance on using with Inkscape",
+      "description_long": "detailed instructions on how layers are interpreted in Inkscape; essential reading for using this tool, since it only works with Inkscape"
+    }
+  ],
+  "arguments": [
+    {
+      "slot": 0,
+      "name": "-i INPUT",
+      "type": "path-cwd",
+      "description_short": "input file"
+    },
+    {
+      "slot": 1,
+      "name": "-o OUTPUT",
+      "type": "path-cwd",
+      "description_short": "output file"
+    },
+    {
+      "slot": 2,
+      "name": "--pretty",
+      "type": "bool",
+      "description_short": "pretty-print JSON"
+    },
+    {
+      "slot": 3,
+      "name": "--curve-segments N",
+      "type": "int",
+      "description_short": "number of line segments a curve be rendered into"
+    },
+    {
+      "slot": 4,
+      "name": "--show-annotations",
+      "type": "bool",
+      "description_short": "display annotations, not just presentation objects"
+    },
+    {
+      "slot": 5,
+      "name": "",
+      "type": "string",
+      "description_short": ""
+    },
+    {
+      "slot": 6,
+      "name": "",
+      "type": "string",
+      "description_short": ""
+    },
+    {
+      "slot": 7,
+      "name": "",
+      "type": "string",
+      "description_short": ""
+    }
+  ],
+  "matrix": [
+    [
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ],
+    [
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ],
+    [
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ],
+    [
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ],
+    [
+      {
+        "applicable": true,
+        "required": true
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": true,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ],
+    [
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      },
+      {
+        "applicable": false,
+        "required": false
+      }
+    ]
+  ]
+}
