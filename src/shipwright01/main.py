@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+import json
 
 
 def _load_lionscliapp():
@@ -42,7 +43,7 @@ def _load_svg2canvasx_flow():
 svg2canvasx_flow = _load_svg2canvasx_flow()
 
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import messagebox
 
 
 SCHEMA_ID = "shipwright-01.command-interface.v0"
@@ -71,6 +72,8 @@ ARGUMENT_SLOTS = 8
 g = {
     "root": None,
     "canvas": None,
+    "status_var": None,
+    "status_label": None,
     "flow": None,
     "regions": {},
     "bindings": {},
@@ -263,6 +266,21 @@ def get_region_size(actual_name):
     """Return width and height of a semantic region."""
     x0, y0, x1, y1 = get_region_box(actual_name)
     return (x1 - x0, y1 - y0)
+
+
+def set_status(message):
+    """Write a short message to the status area."""
+    status_var = g.get("status_var")
+    if status_var is not None:
+        status_var.set(message)
+
+
+def short_error_message(prefix, exc):
+    """Return a short status-line version of an exception message."""
+    text = str(exc).strip() or exc.__class__.__name__
+    if len(text) > 120:
+        text = text[:117] + "..."
+    return f"{prefix}: {text}"
 
 
 def normalize_imported_document(data):
@@ -724,17 +742,13 @@ def commit_all_widget_values():
 
 
 def handle_import_json():
-    """Import a command-interface JSON document from a chosen file."""
-    path = filedialog.askopenfilename(
-        title="Import Command Interface JSON",
-        filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-    )
-    if not path:
-        return
+    """Import a command-interface JSON document from the clipboard."""
     try:
-        data = app.read_json(path, "f")
+        text = g["root"].clipboard_get()
+        data = json.loads(text)
         command_interface, extra = normalize_imported_document(data)
     except Exception as exc:
+        set_status(short_error_message("Import failed", exc))
         messagebox.showerror("Import Failed", str(exc))
         return
 
@@ -743,29 +757,27 @@ def handle_import_json():
     g["window_title"] = command_interface.get("title") or "Shipwright-01"
     update_window_title()
     draw_page()
+    set_status("Imported command interface JSON from clipboard.")
 
 
 def handle_export_json():
-    """Export the current command-interface document to a chosen file."""
-    path = filedialog.asksaveasfilename(
-        title="Export Command Interface JSON",
-        defaultextension=".json",
-        filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-    )
-    if not path:
-        return
+    """Export the current command-interface document to the clipboard."""
     try:
         data = export_command_interface_document()
-        app.write_json(path, data, "f2")
+        text = json.dumps(data, indent=2)
+        g["root"].clipboard_clear()
+        g["root"].clipboard_append(text)
+        g["root"].update()
     except Exception as exc:
+        set_status(short_error_message("Export failed", exc))
         messagebox.showerror("Export Failed", str(exc))
         return
-    messagebox.showinfo("Export Complete", f"Wrote JSON to:\n{path}")
+    set_status("Exported command interface JSON to clipboard.")
 
 
 def go_to_ship_view():
     """Stub navigation target for a future whole-ship view."""
-    messagebox.showinfo("Ship View", "Ship view not implemented yet.")
+    set_status("Ship view not implemented yet.")
 
 
 def create_root_window():
@@ -779,10 +791,23 @@ def create_root_window():
     root.title(f"Shipwright-01 - {title}")
     canvas = tk.Canvas(root, width=width, height=height, bg="white", highlightthickness=0)
     canvas.grid(row=0, column=0, sticky="nsew")
+    status_var = tk.StringVar(value="Ready.")
+    status_label = tk.Label(
+        root,
+        textvariable=status_var,
+        anchor="w",
+        padx=8,
+        pady=4,
+        relief="sunken",
+        borderwidth=1,
+    )
+    status_label.grid(row=1, column=0, sticky="ew")
     root.grid_rowconfigure(0, weight=1)
     root.grid_columnconfigure(0, weight=1)
     g["root"] = root
     g["canvas"] = canvas
+    g["status_var"] = status_var
+    g["status_label"] = status_label
 
 
 def update_window_title():

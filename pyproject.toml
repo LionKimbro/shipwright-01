@@ -9,6 +9,9 @@ description = "Shipwright-01 Command Interface Deck"
 readme = "README.md"
 requires-python = ">=3.10"
 
+[project.scripts]
+shipwright = "shipwright01.main:main"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
