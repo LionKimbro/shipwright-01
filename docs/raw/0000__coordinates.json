@@ -3,52 +3,54 @@
     "document_id": "shipwright.coordinates.2026-06-02",
     "title": "Shipwright Coordinates Register",
     "created": "2026-06-02",
-    "updated": "2026-06-02",
+    "updated": "2026-06-07",
     "purpose": "Track file resources and coordinate-bearing references provided during the Shipwright work session."
   },
   "policy": {
     "instruction": "Append newly provided file resources here as work continues, especially coordinate-bearing and implementation-critical references.",
+    "resolution": {
+      "mode": "document_id_first",
+      "lookup_command": "machine-root get librarian",
+      "note": "Do not store explicit filesystem paths here. Resolve document ids via the librarian registry JSON located by the lookup command when available. If a resource is not registered, note that explicitly."
+    },
     "status": "active"
   },
+  "conversations": [
+    {"url": "https://chatgpt.com/c/6a1f2d61-2ecc-83e8-bd6e-4736bac6b28a", "subject" :"Initial articulation while delerious.", "outputs": ["shipwright-01"]},
+    {"url": "https://chatgpt.com/c/6a1f3153-21c4-83e8-a938-5a36ece3c0df", "subject": "Zooming in on the Inkscape -> Design JSON Process -- Core Development of that Process", "outputs": ["svg2canvasx"]}
+  ],
   "resources": [
     {
       "id": "coding_guidelines.lions_philosophy_of_programming_simplified",
+      "document_id": "lionsphilosophyofprogramming.2025.simplified",
       "kind": "guidelines",
-      "path": "F:\\repo\\lions-documents\\coding-guidelines\\v2026-01-14_part2_lions-philosophy-of-programming_simplified.json",
+      "registry_status": "verified_present",
       "notes": [
         "Primary coding philosophy for this thread.",
-        "Procedural, clarity-first, validation-at-the-boundary guidance."
+        "Procedural, clarity-first, validation-at-the-boundary guidance.",
+        "Originally referenced as v2026-01-14_part2_lions-philosophy-of-programming_simplified.json."
       ]
     },
     {
       "id": "svg2canvasx.flow_format_reference",
+      "document_id": "svg2canvasx.flow-file-and-package-use.raw.v1",
       "kind": "format_reference",
-      "path": "F:\\repo\\svg-to-canvas-extractor\\docs\\raw\\0002__svg2canvasx_package_flow-file-use.json",
+      "registry_status": "verified_present",
       "notes": [
         "Defines the svg2canvasx flow file format.",
-        "Explains presentation layers, annotation layers, and semantic regions."
+        "Explains presentation layers, annotation layers, and semantic regions.",
+        "Originally referenced as 0002__svg2canvasx_package_flow-file-use.json."
       ]
     },
     {
-      "id": "shipwright.command_interface_deck_flow",
-      "kind": "flow_document",
-      "path": "F:\\repo\\shipwright-01\\data\\command-interface-deck.flow.json",
-      "notes": [
-        "Describes the Command Interface Deck appearance.",
-        "Contains semantic region information that is important for logical interpretation.",
-        "Canvas size is 1000 by 800."
-      ],
-      "source": {
-        "path": "F:\\repo\\svg-to-canvas-extractor\\examples\\command-interface-deck.massaged.svg"
-      }
-    },
-    {
       "id": "lionscliapp.reference_manual",
+      "document_id": "lionscliapp.reference.v1",
       "kind": "package_reference",
-      "path": "F:\\repo\\lionscliapp\\doc\\reference.json",
+      "registry_status": "verified_present",
       "notes": [
         "Reference manual for the lionscliapp Python package.",
-        "Describes declaration lifecycle, app.ctx usage, path.* coercion, JSON helpers, and command registration."
+        "Describes declaration lifecycle, app.ctx usage, path.* coercion, JSON helpers, and command registration.",
+        "Originally referenced as reference.json."
       ]
     }
   ]
