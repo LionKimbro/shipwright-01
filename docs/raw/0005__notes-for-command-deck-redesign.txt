@@ -1,0 +1,83 @@
+title: Notes for a Command Deck Redesign
+date: 2026-06-03
+
+
+== Command Interface Deck v2 redesign notes ==
+date: 2026-06-03
+
+- Commands need preview lines.
+- A command summary page should show ~10 command slots.
+- Each command row should show:
+  command name, command preview, short description, long description.
+- Argument configuration should move to a per-command detail page.
+- Arguments should have consistent global definitions.
+- Same argument should not mean different types in different commands.
+- Applicability/requiredness should use:
+  blank = unused
+  ○ = optional
+  ● = required
+- The current matrix was structurally correct but visually too hard to read.
+- Curved connector lines are beautiful but not sufficient for rapid comprehension.
+
+
+== Command Deck: Command Definition - Mock-up ==
+date: 2026-06-03
+
+
+  Commands                                   [Ship View]
+  --------
+
+  [extract     ]  [extract a full JSON description from SVG] [Long] <blank>
+    svg2canvasx extract -i INPUT -o OUTPUT [--pretty] [--curve-segments N]
+
+  [flow        ]  [convert full JSON to "flow" form JSON   ] [Long] (43 lines)
+    svg2canvasx flow -i INPUT -o OUTPUT [--pretty]
+
+  [preview     ]  [preview "flow" JSON visually            ] [Long] <blank>
+    svg2canvasx preview -i INPUT --show-annotations
+
+  [rawtkinter  ]  [                                        ] [Long] <blank>
+    svg2canvasx rawtkinter
+
+  [            ]  [                                        ] [Long] <blank>
+
+  [            ]  [                                        ] [Long] <blank>
+
+  [            ]  [                                        ] [Long] <blank>
+
+  [            ]  [                                        ] [Long] <blank>
+
+
+
+== Command Deck: Argument Use - Mock-Up ==
+
+  Command:
+    svg2canvasx rawtkinter -i INPUT
+    [                                        ] [Long] <blank>
+
+  Arguments:
+
+  [●] [-i        ] [INPUT         ]  [X| | | | | ]  [input file          ]
+      [--input                    ]                 [Long] <blank>
+
+  [●] [-o        ] [OUTPUT        ]  [X| | | | | ]  [output file         ]
+      [--output                   ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
+  [ ] [          ] [              ]  [X| | | | | ]  [                    ]
+      [                           ]                 [Long] <blank>
+
